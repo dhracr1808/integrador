@@ -8,7 +8,7 @@ Property.init(
     description: { type: S.TEXT, allowNull: false },
     price: { type: S.DOUBLE, allowNull: false },
     location: { type: S.STRING, allowNull: false },
-    image: { type: S.STRING },
+    image: { type: S.JSON },
     available: { type: S.BOOLEAN, defaultValue: true },
     truncateDescription: {
       type: S.VIRTUAL,

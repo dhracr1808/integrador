@@ -1,3 +1,3 @@
 export { getProperties, createProperty } from "./property";
-
-export { getUsers } from "./user";
+export { getUsers, newUser } from "./user";
+export { favorites, addFavoriteProp, removeFavorite } from "./favorite";
