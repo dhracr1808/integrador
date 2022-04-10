@@ -8,7 +8,7 @@ import routerFavorites from "./favorite";
 
 router.use("/property", routerProperty);
 router.use("/users", routerUser);
-router.use("/category", roterCategory);
+router.use("/categories", roterCategory);
 router.use("/favorite", routerFavorites);
 
 router.use("/*", (req, res) => {

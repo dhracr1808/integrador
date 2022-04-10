@@ -11,7 +11,17 @@ export class User extends S.Model {
 User.init(
   {
     username: { type: S.STRING(20), allowNull: false },
-    email: { type: S.STRING(50), allowNull: false, unique: true },
+
+    email: {
+      type: S.STRING(50),
+      allowNull: false,
+      validate: {
+        isEmail: { msg: "Email no valido" },
+        notEmpty: { msg: "Ingrese un Email" },
+      },
+      unique: { msg: "El email ya está registrado" },
+    },
+
     password: { type: S.STRING, allowNull: false },
     salt: { type: S.STRING },
   },
@@ -25,19 +35,3 @@ User.addHook("beforeCreate", async (user) => {
   user.password = hash;
   user.salt = salt;
 });
-
-/* email: {
-  type: Sequelize.STRING(40),
-  allowNull: false,
-  unique: {
-      msg: 'El email necesita ser unico'
-  },
-  validate: {
-      isEmail: {
-          msg: 'Email no valido'
-      },
-      notEmpty: {
-          msg: 'Ingrese un email'
-      }
-  }
-} */

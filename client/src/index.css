@@ -1,3 +1,131 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root{
+    --color-font-primary: #2ca5e9;
+    --color-font-second: #746ff0;
+    --color-succes:  #61bb55;
+    --color-favotite: rgb(233, 64, 64);
+    --color-favorite-hover:  rgba(233, 64, 64, 0.75); 
+    --bg-primary : #21193f;
+    --bg-second: #121212;
+    --bg-card: #334155; 
+    --color-font: rgb(209 ,213 ,219);
+    --color-desactive: #676d7d;
+    --color-active: #f59d43;
+}
+html{
+    scroll-behavior: smooth;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+
+::-webkit-scrollbar {
+    width: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+
+    background: var(--bg-card);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--color-font);
+    border-radius: 0.5rem;
+}
+
+.sub-title{
+    font-size: 0.9rem;
+    color: var(--color-font-primary) ;
+    
+}
+
+.icon-success{
+    color: var(--color-font-primary);
+}
+
+.d-flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.d-content{
+    padding: 0.5rem;
+    height:  calc(100% - 200px);
+    position: relative;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.start{
+    justify-content: start;
+    gap: 0.5rem;
+}
+
+.btn_add{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    right: 5%;
+}
+
+.btn_add button{
+    display: flex !important;
+    justify-content: center ;
+    align-items: center  ;
+    border: 1px solid  var(--color-font-primary);
+    border-radius: 0.2rem;
+    display: inline;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem ;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.btn_add button svg{
+    color:   var(--color-favotite);
+    font-size: 1rem;
+    
+}
+.btn_add.no-favorite svg{
+    color:    var(--color-favorite-hover); 
+} 
+
+.text-l{
+    font-size: 1.5rem !important;
+}
+
+@media screen and (max-width: 468px) {
+    .btn_add{
+        right: 3%;
+    }
+    .btn_add button{
+        font-size: 0.8rem;
+        gap: 0.2rem;
+        padding: 0.5rem .8rem ;
+    }   
+}
+
+.icons-start svg{
+    color:  var(--color-desactive);
+}
+.icons-start svg.active {
+    color: var(--color-active) ; 
+}   
+
+
+
+.hr_vert{
+    border: 1.2px solid  var(--bg-card);
+    height: 20px;
+}   
+

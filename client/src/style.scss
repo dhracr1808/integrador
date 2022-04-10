@@ -1,0 +1,247 @@
+$bg-primary : #21193f;
+$bg-second: #121212;
+$bg-primary-hover : #21193f99;
+$bg-second-hover: #12121299;
+$bg-content: #182234;
+$bg-card: #334155;
+$color-font: rgb(209 ,213 ,219) ;
+$color-font-primary: #2ca5e9;
+$color-font-second : #746ff0;
+$bg-over: #12121250;
+$bg-modal: #283046;
+
+body {
+    background: linear-gradient( 180deg, $bg-primary , $bg-second) ;
+    min-height: 100vh;
+    width: 100%;
+    padding-top: 4rem;
+}
+
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+.navbar{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+h1{
+    font-size: 2rem;
+    color: #fff;
+}
+
+
+.title{
+color: $color-font;
+font-weight: 600;
+font-size: 1.2rem;
+
+@media screen and (max-width: 568px) {
+    font-size: .9rem;
+}
+}
+
+.sub_title{
+    color: $color-font-primary;
+    font-weight: 500;
+    font-size: 1rem;
+}
+.sub_title_alt{
+    color: $color-font-second;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+@mixin grid ($num, $space) {
+    display: grid;
+    grid-template-columns:  repeat($num, 1fr);
+    gap: $space;
+}
+
+
+
+.slider{
+    width:  100%;
+    height:  calc(100vh - 4rem);
+    position: relative;
+    .slider_content_img{
+        width: 100%;
+        height:  100%;
+        
+    }
+    .slider_content_over{
+        background-color:   $bg-primary-hover ;
+        position: absolute;
+        max-width:  900px;
+        width: 100%;
+        height: 50vh;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    }
+}
+
+.content_grid{
+    display: grid;
+    padding: 3rem 1rem 1rem;
+    grid-template-columns: repeat(auto-fill, minMax(350px, 1fr));
+    gap: 2rem 1rem ;
+    justify-content: center;
+    align-items: center;
+    background-color: $bg-content;
+    @media screen and (max-width: 568px) {
+        grid-template-columns: repeat(auto-fill, minMax(250px, 1fr));
+    }
+
+}
+.card{
+    width: 100%;
+    height: 300px;
+    background-color:  $bg-card;
+    border-radius: 0.3rem;
+    overflow: hidden;
+    color: $color-font;
+    transition: 0.5s ease-in 0.3s;
+    .card_content{
+        width: 100%;
+        height: 200px;
+        position: relative;
+        cursor: pointer;
+        overflow: hidden;
+        &::before{
+            content: '';
+            background-color: $bg-over ;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            transition: 0.3s ease-in-out;  
+            z-index: 15;
+        }
+        &::after{
+            content: '';
+            background-color: $bg-over;
+            position: absolute;
+            top: 0;
+            right:0;
+            width: 50.1%;
+            height: 100%;
+            transition: 0.3s ease-in-out;  
+            z-index: 15;
+        }
+       
+    }
+    &:hover .card_content::before, &:hover .card_content::after{
+        width: 0;
+        transition: 0.3s ease-in-out;  
+    }
+    &:hover{
+        transform: translateY(-0.2rem);
+        transition: 0.3s ease-in 0.3s;
+        
+    }
+}
+
+.card_price{
+    position: absolute;
+    background-color: $color-font-primary;
+    padding: 0.3rem;
+    font-size: 1.2rem;
+    border-radius: 0 0 0.5rem  0;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    color :  $color-font;
+    font-weight: 900;
+    color:  $color-font;
+    gap: 0.8rem;
+    .icons-start svg{
+        font-size: 1rem;
+    }
+    @media screen and (max-width: 468px) {
+        font-size: .9rem;
+    }
+}
+
+.modal{
+    width: 100%;
+    position: fixed;
+    background: linear-gradient(45deg, $bg-primary-hover, $bg-second-hover);
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    top: 0;
+    z-index: 100;
+}
+
+
+.contentdetail {
+    padding: 1rem;
+    max-width:  1000px;
+    width: 100%;
+    background-color: $bg-modal;
+    position: relative;
+    border-radius: 0.5rem;
+    @include grid(2, 0.5rem);
+    .contentdetail_img{
+        border-radius: 0.5rem;
+        overflow: hidden;
+        max-width: 400px;
+        margin: auto;
+        @media screen and  (max-width: 468px){
+            width: 100%;
+        }
+    }
+    @media screen and  (max-width: 468px){
+        padding: 0.5rem;
+        @include grid(1, 0.5rem);
+    }
+}
+
+.close{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: $color-font;
+    background-color: $bg-card;
+    border-radius: 50%;
+    cursor: pointer;
+    &:hover{
+        background-color: $bg-content;
+        transition: 0.3s ease-in-out;
+    }
+}
+
+.description{
+    border : 1px solid  $bg-card;
+    border-radius: 0.2rem;
+    padding: 0.5rem 0 0.5rem 1rem;
+    margin-top: 0.5rem;
+    overflow: auto;
+    text-align: justify;
+    @media screen and  (max-width: 468px){
+        padding: 0.5rem;
+        height: 30vh;
+    }
+}
+
+.description_small{
+    height: 15vh;
+}
+
+.description_content{
+    overflow: auto;
+    padding-right: 1rem;
+    height: 40vh;
+}

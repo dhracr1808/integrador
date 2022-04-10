@@ -1,6 +1,6 @@
 import Sequelize from "sequelize";
-
-export const db = new Sequelize("propiedades", null, null, {
+import { DATABASE } from "./../config/config";
+export const db = new Sequelize(DATABASE, null, null, {
   host: "localhost",
   dialect: "postgres",
   logging: false,

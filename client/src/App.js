@@ -1,10 +1,13 @@
-import Home from "./components/Home";
+import Home from "./pages/Home";
+import Navabar from "./components/Navbar";
+import ModalContextProvider from "./useContext/StateModal";
 
 function App() {
   return (
-    <div className="App">
+    <ModalContextProvider>
+      <Navabar />
       <Home />
-    </div>
+    </ModalContextProvider>
   );
 }
 
