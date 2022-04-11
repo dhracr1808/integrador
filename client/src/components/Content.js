@@ -4,6 +4,7 @@ import Detail from "../commons/Detail";
 import Modal from "./Modal";
 import casa from "./../assets/casa.jpg";
 import { UseHookModal } from "../useContext/StateModal";
+import Contact from "./Contact";
 
 const Content = () => {
   const { properties } = UseHookProperties();
@@ -25,7 +26,20 @@ const Content = () => {
           );
         })}
       </div>
-      {modal && <Modal content={<Detail />} />}
+      {modal && <Modal content={<ViewModal />} />}
+    </>
+  );
+};
+
+const ViewModal = () => {
+  const toggleView = () => {
+    const modal = document.querySelector(".modal");
+    modal.classList.toggle("active");
+  };
+  return (
+    <>
+      <Detail toggle={toggleView} />
+      <Contact toggle={toggleView} />
     </>
   );
 };

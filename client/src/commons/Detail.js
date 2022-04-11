@@ -2,11 +2,16 @@ import { UseHookProperties } from "../useContext/StateProperties";
 import casa from "./../assets/casa.jpg";
 import { IoMdClose } from "react-icons/io";
 import { UseHookModal } from "../useContext/StateModal";
-import { AiFillStar, AiOutlineStar } from "./../icons";
+import {
+  AiFillStar,
+  AiOutlineStar,
+  MdFavorite,
+  /* MdFavoriteBorder, */
+} from "./../icons";
 import { BiCheckCircle } from "react-icons/bi";
 import { IoCloseCircleOutline } from "react-icons/io5";
 
-const Detail = () => {
+const Detail = ({ toggle }) => {
   const { property } = UseHookProperties();
   const { image, description, name, price, available } = property;
   const { toggleModal } = UseHookModal();
@@ -37,7 +42,19 @@ const Detail = () => {
             <p className="text-slate-500">{description}</p>
           </div>
         </div>
-        <div className="description  description_small "></div>
+        <div className="description  description_small ">
+          <div className="btn_add d-flex">
+            <button className="favorite">
+              <MdFavorite /> {/* <MdFavoriteBorder /> */}
+              Agregar
+            </button>
+          </div>
+          <div className="contact_btn d-flex">
+            <button onClick={toggle} className="contact-btn d-flex">
+              Contacto
+            </button>
+          </div>
+        </div>
       </div>
 
       <div onClick={toggleModal} className="close d-flex">

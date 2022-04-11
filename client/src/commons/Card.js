@@ -56,9 +56,9 @@ const Card = ({ id, name, image, location, precio }) => {
           <span className="text-sm text-slate-500">{location}</span>
         </div>
         <div className={`btn_add d-flex ${!favorite && "no-favorite"}`}>
-          <button onClick={changebtn}>
+          <button className="favorite d-flex" onClick={changebtn}>
             {favorite ? <MdFavorite /> : <MdFavoriteBorder />}
-            Agregar
+            {favorite ? "Quitar" : "Agregar"}
           </button>
         </div>
       </div>

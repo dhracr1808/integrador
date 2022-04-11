@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Navabar = () => {
   return (
@@ -93,6 +94,9 @@ const Navabar = () => {
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            <Link to="loggin">
+              <button>loggin</button>
+            </Link>
             <button
               type="button"
               className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
@@ -115,7 +119,6 @@ const Navabar = () => {
                 />
               </svg>
             </button>
-
             <div className="ml-3 relative">
               <div>
                 <button
@@ -148,7 +151,7 @@ const Navabar = () => {
                   tabIndex="-1"
                   id="user-menu-item-0"
                 >
-                  Your Profile
+                  loggin
                 </a>
                 <a
                   href="#acr"

@@ -40,9 +40,29 @@ html{
     border-radius: 0.5rem;
 }
 
+input, textarea {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 0.6rem;
+    background-color: var(--bg-card);
+    color: var(--color-font);
+    font-size: 0.9rem;
+    border-radius: 0.2rem;
+    resize: none;
+}
+textarea{
+    height: 90px;
+}
+
+
+input::placeholder{
+    color: var(--color-desactive) ;
+}
+
 .sub-title{
     font-size: 0.9rem;
-    color: var(--color-font-primary) ;
+    color: var(--color-font-primary);
     
 }
 
@@ -78,16 +98,17 @@ html{
     right: 5%;
 }
 
-.btn_add button{
-    display: flex !important;
+.btn_add .favorite{
+    display: flex ;
     justify-content: center ;
+    width: 110px;
     align-items: center  ;
     border: 1px solid  var(--color-font-primary);
     border-radius: 0.2rem;
-    display: inline;
     gap: 0.5rem;
     padding: 0.5rem 1rem ;
     font-size: 0.8rem;
+    color: var(--color-font) ;
     font-weight: 500;
 }
 
@@ -129,3 +150,54 @@ html{
     height: 20px;
 }   
 
+.contact_btn{
+    position: absolute;
+    top: 0;
+    left: 5%;
+    bottom: 0;
+}
+
+.ver-hid{
+    overflow: hidden;
+}
+.contact-btn{
+    display: flex ;
+    justify-content: center ;
+    width: 110px;
+    align-items: center  ;
+    border: 1px solid  var(--color-font-second);
+    border-radius: 0.2rem;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem ;
+    font-size: 0.8rem;
+    color: var(--color-font);
+    font-weight: 500;
+}
+
+
+.group-input{
+    width: 100%;
+    padding:  0.5rem 1rem;
+}
+
+.form_footer{
+    padding: 0.5rem 0;
+    justify-content: space-between;
+    padding: 0.5rem 1rem 0  ;
+}
+
+.form_footer button {
+    color: var(--color-desactive);
+    padding: 0.6rem 1rem;
+    background-color: var(--color-font-second);
+    width: 120px;
+    border-radius: 0.2rem;
+}
+.form_footer button.cancel{
+    background-color: rgb(155, 39, 39);
+}
+
+.form_footer button:hover{
+    color: var(--color-font);
+    transition: 0.3s ease;
+}

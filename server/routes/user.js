@@ -7,7 +7,7 @@ const { isAuthenticated, isAdmin } = auth;
 
 const router = Router();
 
-router.get("/", isAuthenticated, getUsers);
+router.get("/", getUsers);
 
 router.post("/", newUser);
 
