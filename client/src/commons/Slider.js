@@ -12,9 +12,7 @@ const Slider = () => {
       <div className="slider_content_img">
         <img id="img" src={changeSlider()} alt="iemagen " />
         <div className="slider_content_over d-flex">
-          <h1 className="text-center">
-            la immoviliaria de tus sueños esta aquí
-          </h1>
+          <h1 className="text-center">Residencia el trebol</h1>
         </div>
       </div>
     </div>

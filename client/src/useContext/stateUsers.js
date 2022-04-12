@@ -1,22 +1,50 @@
-import { createContext, useContext, useState } from "react";
-import { getUser } from "../api/user";
+import { createContext, useContext, useEffect, useState } from "react";
+import { loggin, isAuth, signup, logout } from "../api/user";
+import { UseHookModal } from "./StateModal";
 
 const UsersContext = createContext();
 
 export const UseHookUser = () => useContext(UsersContext);
 
 const UserContextProvider = ({ children }) => {
-  const [user, setUser] = useState({});
-
-  const loggin = async (form) => {
-    const result = await getUser(form);
-    setUser(result.data);
+  const [user, setUser] = useState({ authenticated: false });
+  const { reset, toggleModal, changeOptions } = UseHookModal();
+  const getUser = async () => {
+    try {
+      const result = await isAuth();
+      setUser({ ...result.data, authenticated: true });
+    } catch (error) {}
   };
 
-  console.log(user);
+  const sendLoggin = async (form) => {
+    try {
+      await loggin(form);
+      getUser();
+      reset();
+    } catch (error) {
+      changeOptions(true);
+    }
+  };
+
+  const register = async (data) => {
+    try {
+      await signup(data);
+      toggleModal();
+    } catch (error) {}
+  };
+
+  const signOff = async () => {
+    await logout();
+    getUser();
+    reset();
+  };
+
+  useEffect(() => getUser, []);
 
   return (
-    <UsersContext.Provider value={{ user, setUser, loggin }}>
+    <UsersContext.Provider
+      value={{ user, setUser, sendLoggin, getUser, register, signOff }}
+    >
       {children}
     </UsersContext.Provider>
   );

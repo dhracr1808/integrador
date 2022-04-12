@@ -1,20 +1,15 @@
 import { Router } from "express";
 import passport from "passport";
-import { getUsers, newUser } from "../controllers";
-import { User } from "../models";
+import { getUsers, isAuth, loggin, Logout, newUser } from "../controllers";
 import { auth } from "./../config/auth";
 const { isAuthenticated, isAdmin } = auth;
 
 const router = Router();
 
-router.get("/", getUsers);
-
+router.get("/", isAuthenticated, getUsers);
+router.get("/auth", isAuth);
 router.post("/", newUser);
-
-router.post("/loggin", passport.authenticate("local"), (req, res) => {
-  if (!req.user) return res.sendStatus(401);
-  const { id, username, email } = req.user;
-  res.send({ id, username, email });
-});
+router.post("/logout", Logout);
+router.post("/loggin", passport.authenticate("local"), loggin);
 
 export default router;

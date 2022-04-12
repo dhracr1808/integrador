@@ -8,8 +8,7 @@ import Contact from "./Contact";
 
 const Content = () => {
   const { properties } = UseHookProperties();
-  const { modal } = UseHookModal();
-
+  const { home, status } = UseHookModal();
   return (
     <>
       <div className="content_grid">
@@ -26,7 +25,7 @@ const Content = () => {
           );
         })}
       </div>
-      {modal && <Modal content={<ViewModal />} />}
+      {home && status && <Modal content={<ViewModal />} />}
     </>
   );
 };

@@ -3,19 +3,19 @@ import Navabar from "./components/Navbar";
 import ModalContextProvider from "./useContext/StateModal";
 import UsersProvider from "./useContext/stateUsers";
 import { Route, Routes } from "react-router-dom";
-import Loggin from "./components/Loggin";
+import Favorites from "./pages/Favorites";
 
 function App() {
   return (
-    <UsersProvider>
-      <ModalContextProvider>
+    <ModalContextProvider>
+      <UsersProvider>
         <Navabar />
         <Routes>
           <Route path="/" element={<Home />}></Route>
-          <Route path="/loggin" element={<Loggin />}></Route>
+          <Route path="/favorites" element={<Favorites />}></Route>
         </Routes>
-      </ModalContextProvider>
-    </UsersProvider>
+      </UsersProvider>
+    </ModalContextProvider>
   );
 }
 
