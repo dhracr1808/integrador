@@ -6,6 +6,6 @@ const router = Router();
 
 router.get("/user", isAuthenticated, favorites);
 router.put("/", isAuthenticated, addFavoriteProp);
-router.delete("/", isAuthenticated, removeFavorite);
+router.delete("/", removeFavorite);
 
 export default router;
