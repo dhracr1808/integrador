@@ -2,18 +2,19 @@ import Home from "./pages/Home";
 import Navabar from "./components/Navbar";
 import ModalContextProvider from "./useContext/StateModal";
 import UsersProvider from "./useContext/stateUsers";
-import { Route, Routes } from "react-router-dom";
-import Favorites from "./pages/Favorites";
+import Routerapp from "./RoutesApp";
+import FavoriteContextProvider from "./useContext/stateFavorite";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <ModalContextProvider>
       <UsersProvider>
         <Navabar />
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/favorites" element={<Favorites />}></Route>
-        </Routes>
+        <FavoriteContextProvider>
+          <Routerapp />
+          <Toaster />
+        </FavoriteContextProvider>
       </UsersProvider>
     </ModalContextProvider>
   );

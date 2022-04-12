@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { addFavotite, getFavorites } from "../api/favorites";
+import { addFavotite, getFavorites, removeFavorite } from "../api/favorites";
 import { UseHookUser } from "./stateUsers";
 
 const FavoriteContext = createContext();
@@ -8,11 +8,13 @@ export const UseHookFavorites = () => useContext(FavoriteContext);
 
 const FavoriteContextProvider = ({ children }) => {
   const [favorites, setFavorites] = useState([]);
-  const { user } = UseHookUser();
+  const { user, status } = UseHookUser();
+
+  console.log(favorites);
 
   const getAllfavorites = async () => {
     try {
-      if (!user.authenticated) return;
+      /*   if (!status) return; */
       const result = await getFavorites();
       setFavorites(result.data);
     } catch (error) {
@@ -25,11 +27,22 @@ const FavoriteContextProvider = ({ children }) => {
     getAllfavorites();
   };
 
+  const deleteFavorite = async (id) => {
+    await removeFavorite(id);
+    getAllfavorites();
+  };
+
   useEffect(() => getAllfavorites, [user]);
 
   return (
     <FavoriteContext.Provider
-      value={{ favorites, setFavorites, getAllfavorites, newFavorite }}
+      value={{
+        favorites,
+        setFavorites,
+        getAllfavorites,
+        newFavorite,
+        deleteFavorite,
+      }}
     >
       {children}
     </FavoriteContext.Provider>

@@ -6,26 +6,30 @@ import casa from "./../assets/casa.jpg";
 import { UseHookModal } from "../useContext/StateModal";
 import Contact from "./Contact";
 
-const Content = () => {
+const Content = ({ title }) => {
   const { properties } = UseHookProperties();
   const { home, status } = UseHookModal();
   return (
     <>
-      <div className="content_grid">
-        {properties.map(({ id, name, image, location, price }) => {
-          return (
-            <Card
-              key={id}
-              id={id}
-              name={name}
-              image={image?.secure_url || casa}
-              location={location}
-              precio={price}
-            />
-          );
-        })}
+      <div className="content" id="content">
+        <h1 className="title">{title}</h1>
+
+        <div className="content_grid ">
+          {properties.map(({ id, name, image, location, price }) => {
+            return (
+              <Card
+                key={id}
+                id={id}
+                name={name}
+                image={image?.secure_url || casa}
+                location={location}
+                precio={price}
+              />
+            );
+          })}
+        </div>
+        {home && status && <Modal content={<ViewModal />} />}
       </div>
-      {home && status && <Modal content={<ViewModal />} />}
     </>
   );
 };

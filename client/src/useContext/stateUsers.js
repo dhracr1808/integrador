@@ -8,11 +8,18 @@ export const UseHookUser = () => useContext(UsersContext);
 
 const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState({ authenticated: false });
+  const [status, setStatus] = useState(false);
   const { reset, toggleModal, changeOptions } = UseHookModal();
+
+  const changeStatus = () => {
+    setStatus(true);
+  };
+
   const getUser = async () => {
     try {
       const result = await isAuth();
       setUser({ ...result.data, authenticated: true });
+      changeStatus();
     } catch (error) {}
   };
 
@@ -43,7 +50,16 @@ const UserContextProvider = ({ children }) => {
 
   return (
     <UsersContext.Provider
-      value={{ user, setUser, sendLoggin, getUser, register, signOff }}
+      value={{
+        user,
+        setUser,
+        sendLoggin,
+        getUser,
+        register,
+        signOff,
+        changeStatus,
+        status,
+      }}
     >
       {children}
     </UsersContext.Provider>

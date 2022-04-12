@@ -10,6 +10,7 @@ const Card = ({ id, name, image, location, precio }) => {
   const { showProperty } = UseHookProperties();
   const { toggleModal } = UseHookModal();
   const { newFavorite } = UseHookFavorites();
+
   const changebtn = () => {
     setaddfavorite(!favorite);
   };
@@ -26,8 +27,7 @@ const Card = ({ id, name, image, location, precio }) => {
   };
 
   const addFavorite = async ({ target }) => {
-    const favorite = await newFavorite(target.id);
-    console.log(favorite.data);
+    await newFavorite(target.id);
     changebtn();
   };
 

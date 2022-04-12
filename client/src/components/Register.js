@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { IoMdClose } from "react-icons/io";
+import { IoMdClose } from "./../icons";
 import { UseHookModal } from "../useContext/StateModal";
 import { UseHookUser } from "../useContext/stateUsers";
 

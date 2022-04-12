@@ -139,7 +139,13 @@ const ButonsAuth = () => {
 };
 
 const IsAuth = () => {
+  const [windonw, setWindonw] = useState(false);
   const { signOff } = UseHookUser();
+
+  const toggleWindonw = () => {
+    setWindonw(!windonw);
+  };
+
   return (
     <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
       <button
@@ -164,7 +170,7 @@ const IsAuth = () => {
           />
         </svg>
       </button>
-      <div className="ml-3 relative">
+      <div className="ml-3 relative" onClick={toggleWindonw}>
         <div>
           <button
             type="button"
@@ -182,38 +188,31 @@ const IsAuth = () => {
           </button>
         </div>
 
-        <div
-          className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
-          role="menu"
-          aria-orientation="vertical"
-          aria-labelledby="user-menu-button"
-          tabIndex="-1"
-        >
-          <a
-            href="#acr"
-            className="block px-4 py-2 text-sm text-gray-700"
-            role="menuitem"
+        {windonw && (
+          <div
+            className="windonw origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
             tabIndex="-1"
-            id="user-menu-item-0"
           >
-            me
-          </a>
+            <Link to="/me" className="block px-4 py-2 text-sm text-gray-700">
+              Perfil
+            </Link>
 
-          <Link
-            to="/favorites"
-            className="block px-4 py-2 text-sm text-gray-700"
-          >
-            Favoritos
-          </Link>
+            <Link
+              to="/favorites"
+              className="block px-4 py-2 text-sm text-gray-700"
+            >
+              Favoritos
+            </Link>
 
-          <Link
-            to="/"
-            onClick={signOff}
-            className="block px-4 py-2 text-sm text-gray-700"
-          >
-            Logout
-          </Link>
-        </div>
+            <Link
+              to="/"
+              onClick={signOff}
+              className="block px-4 py-2 text-sm text-gray-700"
+            >
+              Logout
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );
